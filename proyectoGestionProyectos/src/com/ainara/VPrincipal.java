@@ -1,6 +1,8 @@
 package com.ainara;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VPrincipal {
     private JMenuBar menu_bar;
@@ -27,4 +29,23 @@ public class VPrincipal {
     private JMenuItem item_suministroProveedores_gestion;
     private JMenuItem item_suministrosPiezas_gestion;
     private JMenuItem item_estadisticas_gestion;
+
+
+    public VPrincipal() {
+        menu_proveedores.addActionListener(e -> {
+
+        });
+        menu_piezas.addActionListener(e -> {
+
+        });
+        menu_proyectos.addActionListener(e -> {
+
+        });
+        menu_gestion.addActionListener(e -> {
+
+        });
+        menu_ayuda.addActionListener(e -> {
+
+        });
+    }
 }
