@@ -25,4 +25,12 @@ public class VGestionProveedores {
     private JButton button3;
     private JButton button4;
     private JButton bajaButton;
+
+    public VGestionProveedores(){
+
+    }
+
+    public JPanel getVPanelGestionProveedores() {
+        return VPanelGestionProveedores;
+    }
 }
