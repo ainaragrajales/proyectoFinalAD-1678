@@ -49,7 +49,7 @@
                       <text value="Código de Proveedor"/>
                     </properties>
                   </component>
-                  <component id="6b824" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                  <component id="6b824" class="javax.swing.JTextField" binding="et_cod_proveedor">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="95" height="-1"/>
@@ -65,7 +65,7 @@
                       <text value="Nombre"/>
                     </properties>
                   </component>
-                  <component id="90357" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                  <component id="90357" class="javax.swing.JTextField" binding="et_nom_proveedor">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="220" height="-1"/>
@@ -81,7 +81,7 @@
                       <text value="Apellidos"/>
                     </properties>
                   </component>
-                  <component id="43f08" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+                  <component id="43f08" class="javax.swing.JTextField" binding="et_ape_proveedor">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="260" height="-1"/>
@@ -97,7 +97,7 @@
                       <text value="Dirección"/>
                     </properties>
                   </component>
-                  <component id="fe9d1" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+                  <component id="fe9d1" class="javax.swing.JTextField" binding="et_dir_proveedor">
                     <constraints>
                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="320" height="-1"/>
@@ -115,7 +115,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="560de" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
+                  <component id="560de" class="javax.swing.JButton" binding="b_limpiar_proveedor">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -123,7 +123,7 @@
                       <text value="Limpiar"/>
                     </properties>
                   </component>
-                  <component id="54479" class="javax.swing.JButton" binding="insertarButton" default-binding="true">
+                  <component id="54479" class="javax.swing.JButton" binding="b_insertar_proveedor">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -131,7 +131,7 @@
                       <text value="Insertar"/>
                     </properties>
                   </component>
-                  <component id="9a3f6" class="javax.swing.JButton" binding="modificarButton" default-binding="true">
+                  <component id="9a3f6" class="javax.swing.JButton" binding="b_modificar_proveedor">
                     <constraints>
                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -139,7 +139,7 @@
                       <text value="Modificar"/>
                     </properties>
                   </component>
-                  <component id="26855" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
+                  <component id="26855" class="javax.swing.JButton" binding="b_eliminar_proveedor">
                     <constraints>
                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -185,7 +185,7 @@
                       <text value="Código de Proveedor"/>
                     </properties>
                   </component>
-                  <component id="5e858" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+                  <component id="5e858" class="javax.swing.JTextField" binding="et_codList_proveedor">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="95" height="-1"/>
@@ -203,7 +203,7 @@
                       <text value="Nombre"/>
                     </properties>
                   </component>
-                  <component id="e6d50" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+                  <component id="e6d50" class="javax.swing.JTextField" binding="et_nomList_proveedor">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="220" height="-1"/>
@@ -219,7 +219,7 @@
                       <text value="Apellidos"/>
                     </properties>
                   </component>
-                  <component id="ee01d" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+                  <component id="ee01d" class="javax.swing.JTextField" binding="et_apeList_proveedor">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="260" height="-1"/>
@@ -235,7 +235,7 @@
                       <text value="Dirección"/>
                     </properties>
                   </component>
-                  <component id="9892a" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+                  <component id="9892a" class="javax.swing.JTextField" binding="et_dirList_proveedor">
                     <constraints>
                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="320" height="-1"/>
@@ -253,7 +253,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="2a558" class="javax.swing.JButton" binding="button1" default-binding="true">
+                  <component id="2a558" class="javax.swing.JButton" binding="b_first_proveedor">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -261,7 +261,7 @@
                       <text value="|&lt;&lt;"/>
                     </properties>
                   </component>
-                  <component id="74be6" class="javax.swing.JButton" binding="button2" default-binding="true">
+                  <component id="74be6" class="javax.swing.JButton" binding="b_prev_proveedor">
                     <constraints>
                       <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -269,7 +269,7 @@
                       <text value="&lt;&lt;"/>
                     </properties>
                   </component>
-                  <component id="2607e" class="javax.swing.JButton" binding="button3" default-binding="true">
+                  <component id="2607e" class="javax.swing.JButton" binding="b_next_proveedor">
                     <constraints>
                       <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -277,7 +277,7 @@
                       <text value="&gt;&gt;"/>
                     </properties>
                   </component>
-                  <component id="6e49b" class="javax.swing.JButton" binding="button4" default-binding="true">
+                  <component id="6e49b" class="javax.swing.JButton" binding="b_last_proveedor">
                     <constraints>
                       <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -285,7 +285,7 @@
                       <text value="&gt;&gt;|"/>
                     </properties>
                   </component>
-                  <component id="a6581" class="javax.swing.JButton" binding="ejecutarConsultaButton" default-binding="true">
+                  <component id="a6581" class="javax.swing.JButton" binding="b_ejecutarConsulta_proveedor">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="280" height="-1"/>
@@ -295,7 +295,7 @@
                       <text value="Ejecutar Consulta"/>
                     </properties>
                   </component>
-                  <component id="f02dc" class="javax.swing.JButton" binding="bajaButton" default-binding="true">
+                  <component id="f02dc" class="javax.swing.JButton" binding="b_baja_proveedor">
                     <constraints>
                       <grid row="0" column="5" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
