@@ -6,18 +6,22 @@ import org.hibernate.query.Query;
 
 import java.util.Iterator;
 import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import org.hibernate.Version;
 
 public class Main {
 
     public static final SessionFactory sesion = HibernateUtil.getSessionFactory();
 
     public static void main(String[] args) {
+        //Supuestamente con estas lineas elimina los mensajes de info de la consola
         LogManager.getLogManager().reset();
         Logger globalLogger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         globalLogger.setLevel(Level.OFF);
+
 
         Session session = sesion.openSession();
         Query q = session.createQuery("from ProveedoresEntity ");
