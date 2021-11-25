@@ -1,23 +1,24 @@
 package com.ainara;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "piezas", schema = "gestionProyectos", catalog = "")
-public class PiezasEntity {
-    private Object idPieza;
+public class PiezasEntity implements Serializable {
+    private int idPieza;
     private String nombre;
     private double precio;
     private String descripcion;
 
     @Id
     @Column(name = "id_pieza", nullable = false)
-    public Object getIdPieza() {
+    public int getIdPieza() {
         return idPieza;
     }
 
-    public void setIdPieza(Object idPieza) {
+    public void setIdPieza(int   idPieza) {
         this.idPieza = idPieza;
     }
 

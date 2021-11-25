@@ -1,12 +1,13 @@
 package com.ainara;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "gestion", schema = "gestionProyectos", catalog = "")
-public class GestionEntity {
-    private Object idGestion;
+public class GestionEntity implements Serializable {
+    private int idGestion;
     private Double cantidad;
     private ProveedoresEntity proveedoresByCodProv;
     private PiezasEntity piezasByCodPieza;
@@ -14,11 +15,11 @@ public class GestionEntity {
 
     @Id
     @Column(name = "id_gestion", nullable = false)
-    public Object getIdGestion() {
+    public int getIdGestion() {
         return idGestion;
     }
 
-    public void setIdGestion(Object idGestion) {
+    public void setIdGestion(int idGestion) {
         this.idGestion = idGestion;
     }
 

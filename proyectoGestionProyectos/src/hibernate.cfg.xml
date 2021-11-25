@@ -7,6 +7,8 @@
     <property name="connection.url">jdbc:mysql://localhost:3306/gestionProyectos</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">several975:burn:month:War</property>
 
     <property name="hibernate.show_sql">false</property>
     <property name="hibernate.generate_statistics">false</property>
