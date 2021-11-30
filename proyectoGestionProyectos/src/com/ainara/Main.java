@@ -23,7 +23,8 @@ public class Main {
         globalLogger.setLevel(Level.OFF);
 
 
-        Session session = sesion.openSession();
+        //Mostrar lista proveedores
+        /*Session session = sesion.openSession();
         Query q = session.createQuery("from ProveedoresEntity ");
         List<ProveedoresEntity> lista = q.list();
         Iterator<ProveedoresEntity> iter = lista.iterator();
@@ -32,6 +33,10 @@ public class Main {
             ProveedoresEntity prov = iter.next();
             System.out.printf("%s, %s%n", prov.getIdProv(), prov.getNombre());
         }
-        session.close();
+        session.close();*/
+
+        for (ProveedoresEntity prov: Cargas.listaProveedores()) {
+            System.out.println(prov.getNombre());
+        }
     }
 }
