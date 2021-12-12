@@ -12,6 +12,26 @@ public class ProveedoresEntity implements Serializable {
     private String apellidos;
     private String dir;
 
+    public ProveedoresEntity() {
+    }
+
+    public ProveedoresEntity(int idProv, String nombre, String apellidos, String dir) {
+        this.idProv = idProv;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dir = dir;
+    }
+
+    public ProveedoresEntity(int idProv) {
+        this.idProv = idProv;
+    }
+
+    public ProveedoresEntity(String nombre, String apellidos, String dir) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dir = dir;
+    }
+
     @Id
     @Column(name = "id_prov", nullable = false)
     public int getIdProv() {

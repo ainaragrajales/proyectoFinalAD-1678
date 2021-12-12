@@ -35,7 +35,7 @@ public class Main {
         }
         session.close();*/
 
-        for (ProveedoresEntity prov: Cargas.listaProveedores()) {
+        for (ProveedoresEntity prov: new Cargas().listaProveedores()) {
             System.out.println(prov.getNombre());
         }
     }

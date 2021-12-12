@@ -5,6 +5,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
 import javax.persistence.PersistenceException;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Cargas {
 
     public static final SessionFactory sesion = HibernateUtil.getSessionFactory();
 
-    public static ArrayList<ProveedoresEntity> listaProveedores() {
+    public ArrayList<ProveedoresEntity> listaProveedores() {
         Session session = sesion.openSession();
         Query q = session.createQuery("from ProveedoresEntity ");
         ArrayList<ProveedoresEntity> list = new ArrayList<>();
@@ -27,7 +28,7 @@ public class Cargas {
         return list;
     }
 
-    public static ArrayList<PiezasEntity> listaPiezas() {
+    public ArrayList<PiezasEntity> listaPiezas() {
         Session session = sesion.openSession();
         Query q = session.createQuery("from PiezasEntity ");
         ArrayList<PiezasEntity> list = new ArrayList<>();
@@ -41,7 +42,7 @@ public class Cargas {
         return list;
     }
 
-    public static ArrayList<ProyectosEntity> listaProyectos() {
+    public ArrayList<ProyectosEntity> listaProyectos() {
         Session session = sesion.openSession();
         Query q = session.createQuery("from ProyectosEntity ");
         ArrayList<ProyectosEntity> list = new ArrayList<>();
@@ -55,7 +56,7 @@ public class Cargas {
         return list;
     }
 
-    public static ArrayList<GestionEntity> listaGestiones() {
+    public ArrayList<GestionEntity> listaGestiones() {
         Session session = sesion.openSession();
         Query q = session.createQuery("from GestionEntity ");
         ArrayList<GestionEntity> list = new ArrayList<>();
@@ -69,21 +70,15 @@ public class Cargas {
         return list;
     }
 
-    public static void insertarProveedor(int id, String nombre, String apellido, String dir) {
+    public void insertarProveedor(ProveedoresEntity proveedor) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
-        System.out.println("Inserto un Proveedor.");
-
-        ProveedoresEntity prov = new ProveedoresEntity();
-        prov.setIdProv(id);
-        prov.setNombre(nombre);
-        prov.setApellidos(apellido);
-        prov.setDir(dir);
+        //System.out.println("Inserto un Proveedor.");
 
 
         try {
-            session.save(prov);
+            session.save(proveedor);
 
             try {
                 tx.commit();
@@ -102,7 +97,7 @@ public class Cargas {
         session.close();
     }
 
-    public static void insertarPieza(int id, String nombre, String descrip, double precio) {
+    public void insertarPieza(int id, String nombre, String descrip, double precio) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -134,7 +129,7 @@ public class Cargas {
         session.close();
     }
 
-    public static void insertarProyecto(int id, String nombre, String ciudad) {
+    public void insertarProyecto(int id, String nombre, String ciudad) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -165,7 +160,7 @@ public class Cargas {
         session.close();
     }
 
-    public static void insertarGestion(int id, ProveedoresEntity prov, PiezasEntity piez, ProyectosEntity proy, double cant) {
+    public void insertarGestion(int id, ProveedoresEntity prov, PiezasEntity piez, ProyectosEntity proy, double cant) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -198,23 +193,19 @@ public class Cargas {
         session.close();
     }
 
-    public static void modificarProveedor(int id, String nombre, String apellidos, String dir) {
+    public void modificarProveedor(ProveedoresEntity proveedor) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
-        ProveedoresEntity prov = new ProveedoresEntity();
+
 
         try {
-            prov = session.load(ProveedoresEntity.class, id);
+            proveedor = session.load(ProveedoresEntity.class, proveedor.getIdProv());
 
-            if (prov == null) {
+            if (proveedor == null) {
                 System.out.println("El proveedor no existe");
-                //JOptioPanel
+                JOptionPane.showMessageDialog(null, "No existe el proveedor con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
             } else {
-                prov.setNombre(nombre);
-                prov.setApellidos(apellidos);
-                prov.setDir(dir);
-
-                session.update(prov);
+                session.update(proveedor);
                 tx.commit();
             }
 
@@ -230,7 +221,7 @@ public class Cargas {
         }
     }
 
-    public static void modificarPieza(int id, String nombre, String desc, double precio) {
+    public void modificarPieza(int id, String nombre, String desc, double precio) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
         PiezasEntity pieza = new PiezasEntity();
@@ -261,7 +252,7 @@ public class Cargas {
         }
     }
 
-    public static void modificarProyecto(int id, String nombre, String ciudad) {
+    public void modificarProyecto(int id, String nombre, String ciudad) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
         ProyectosEntity proyecto = new ProyectosEntity();
@@ -291,10 +282,10 @@ public class Cargas {
         }
     }
 
-    public static void modificarGestion() {
+    public void modificarGestion() {
     }
 
-    public static void eliminarProveedor(int id) {
+    public void eliminarProveedor(int id) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -316,7 +307,7 @@ public class Cargas {
         session.close();
     }
 
-    public static void eliminarPieza(int id) {
+    public void eliminarPieza(int id) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -338,7 +329,7 @@ public class Cargas {
         session.close();
     }
 
-    public static void eliminarProyecto(int id) {
+    public void eliminarProyecto(int id) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
@@ -360,10 +351,11 @@ public class Cargas {
         session.close();
     }
 
-    public static void eliminarGestion() {
+    public void eliminarGestion() {
     }
 
-    public static void consultaProveedorPorCod() {
+    public void consultaProveedorPorCod(int cod) {
+
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from ProveedoresEntity where dni = :numemple";
@@ -374,7 +366,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaProveedorPorNombre() {
+    public void consultaProveedorPorNombre() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -385,7 +377,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaProveedorPorDir() {
+    public void consultaProveedorPorDir() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -396,7 +388,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaPiezaPorCod() {
+    public void consultaPiezaPorCod() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -407,7 +399,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaPiezaPorNombre() {
+    public void consultaPiezaPorNombre() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -418,7 +410,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaProyectoPorCod() {
+    public void consultaProyectoPorCod() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -429,7 +421,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaProyectoPorNombre() {
+    public void consultaProyectoPorNombre() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";
@@ -440,7 +432,7 @@ public class Cargas {
         */
     }
 
-    public static void consultaProyectoPorCiudad() {
+    public void consultaProyectoPorCiudad() {
         /*
         //Muestra el apellido y oficio del empleado con número 7369
         String hql = "from EmpleadosEntity where dni = :numemple";

@@ -1,6 +1,9 @@
 package com.ainara;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class VGestionProveedores {
     private JTabbedPane panel_proveedores;
@@ -26,10 +29,195 @@ public class VGestionProveedores {
     private JButton b_last_proveedor;
     private JButton b_baja_proveedor;
 
+    private ArrayList<ProveedoresEntity> listaProveedores = new ArrayList<>();
+    /*private ArrayList<PiezasEntity> listaPiezas = new ArrayList<>();
+    private ArrayList<ProyectosEntity> listaProyectos = new ArrayList<>();
+    private ArrayList<GestionEntity> listaGestiones = new ArrayList<>();*/
+
+    private ProveedoresEntity proveedor;
+    /*private PiezasEntity pieza;
+    private ProyectosEntity proyecto;
+    private GestionEntity gestion;*/
+    private int indice = 0;
+
     public VGestionProveedores(){
+
+        CargarTodo();
+
+        //Pestaña Gestión Proveedores
+
+        b_limpiar_proveedor.addActionListener(e -> {
+            et_cod_proveedor.setText("");
+            et_nom_proveedor.setText("");
+            et_ape_proveedor.setText("");
+            et_dir_proveedor.setText("");
+        });
+        b_insertar_proveedor.addActionListener(e -> {
+            //et_cod_proveedor.setEnabled(false);
+            if (!ComprobarCamposVacios()){
+                //Igual hay que modificarlo y mostrar que campos están vacíos, ej: cod o nombre...
+                JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
+                //MensajePersonalizado("Campos vacíos", "No puede haber campos vacíos, compruebalos", 0);
+            } else {
+                proveedor = new ProveedoresEntity(et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
+                listaProveedores.add(proveedor);
+                new Cargas().insertarProveedor(proveedor);
+                CargarTodo();
+            }
+        });
+        b_modificar_proveedor.addActionListener(e -> {
+            if (!ComprobarCamposVacios()){
+                JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
+            } else {
+                int cod_prov = Integer.parseInt(et_cod_proveedor.getText());
+                proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
+                listaProveedores.add(proveedor);
+                new Cargas().modificarProveedor(proveedor);
+                CargarTodo();
+            }
+        });
+        b_eliminar_proveedor.addActionListener(e -> {
+            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION){
+                int cod_prov = Integer.parseInt(et_cod_proveedor.getText());
+                proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
+                listaProveedores.remove(proveedor);
+                new Cargas().eliminarProveedor(cod_prov);
+                CargarTodo();
+            }
+        });
+
+        //Pestaña Listado de Proveedores
+        et_codList_proveedor.setEnabled(false);
+        et_nomList_proveedor.setEnabled(false);
+        et_apeList_proveedor.setEnabled(false);
+        et_dirList_proveedor.setEnabled(false);
+
+        b_ejecutarConsulta_proveedor.addActionListener(e -> {
+
+            et_codList_proveedor.setText(String.valueOf(listaProveedores.get(0).getIdProv()));
+            et_nomList_proveedor.setText(listaProveedores.get(0).getNombre());
+            et_apeList_proveedor.setText(listaProveedores.get(0).getApellidos());
+            et_dirList_proveedor.setText(listaProveedores.get(0).getDir());
+            indice = 0;
+        });
+        b_first_proveedor.addActionListener(e -> {
+            proveedor = listaProveedores.get(0);
+            et_codList_proveedor.setText(String.valueOf(proveedor.getIdProv()));
+            et_nomList_proveedor.setText(proveedor.getNombre());
+            et_apeList_proveedor.setText(proveedor.getApellidos());
+            et_dirList_proveedor.setText(proveedor.getDir());
+            indice = 0;
+        });
+        b_prev_proveedor.addActionListener(e -> {
+            int total = listaProveedores.size() - 1;
+            if (indice > 0 && indice <= total){
+                int prev_indice = indice - 1;
+                ProveedoresEntity provNuevo = listaProveedores.get(prev_indice);
+
+                et_codList_proveedor.setText(String.valueOf(provNuevo.getIdProv()));
+                et_nomList_proveedor.setText(provNuevo.getNombre());
+                et_apeList_proveedor.setText(provNuevo.getApellidos());
+                et_dirList_proveedor.setText(provNuevo.getDir());
+                indice = prev_indice;
+            }
+
+
+        });
+        b_next_proveedor.addActionListener(e -> {
+            int total = listaProveedores.size() - 1;
+            if (indice >= 0 && indice < total){
+                int next_indice = indice + 1;
+                ProveedoresEntity provNuevo = listaProveedores.get(next_indice);
+
+                et_codList_proveedor.setText(String.valueOf(provNuevo.getIdProv()));
+                et_nomList_proveedor.setText(provNuevo.getNombre());
+                et_apeList_proveedor.setText(provNuevo.getApellidos());
+                et_dirList_proveedor.setText(provNuevo.getDir());
+                indice = next_indice;
+            }
+
+        });
+        b_last_proveedor.addActionListener(e -> {
+
+            int total = listaProveedores.size();
+            proveedor = listaProveedores.get(total-1);
+            et_codList_proveedor.setText(String.valueOf(proveedor.getIdProv()));
+            et_nomList_proveedor.setText(proveedor.getNombre());
+            et_apeList_proveedor.setText(proveedor.getApellidos());
+            et_dirList_proveedor.setText(proveedor.getDir());
+            indice = total - 1;
+        });
+        b_baja_proveedor.addActionListener(e -> {
+            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION){
+                int cod_prov = Integer.parseInt(et_codList_proveedor.getText());
+                proveedor = new ProveedoresEntity(cod_prov, et_nomList_proveedor.getText(), et_apeList_proveedor.getText(), et_dirList_proveedor.getText());
+                listaProveedores.remove(proveedor);
+                new Cargas().eliminarProveedor(cod_prov);
+                CargarTodo();
+            }
+        });
+    }
+
+    public void CargarTodo(){
+        CargarDatos();
 
     }
 
+    public void CargarDatos(){
+        listaProveedores = new Cargas().listaProveedores();
+        /*listaPiezas = new Cargas().listaPiezas();
+        listaProyectos = new Cargas().listaProyectos();
+        listaGestiones = new Cargas().listaGestiones();*/
+    }
+
+    private boolean ComprobarCamposVacios(){
+        boolean hayDato = true;
+        ArrayList<JTextField> campos = new ArrayList<>();
+        campos.add(et_cod_proveedor);
+        campos.add(et_nom_proveedor);
+        campos.add(et_ape_proveedor);
+        campos.add(et_dir_proveedor);
+
+        for (JTextField campo : campos) {
+            if (campo.getText().equalsIgnoreCase("")) {
+                hayDato = false;
+            }
+        }
+        return hayDato;
+    }
+
+    private String CamposVacios(){
+        String vacios = "Los siguientes campos están vacios:\n";
+
+        if (et_cod_proveedor.getText().equalsIgnoreCase("")){
+            vacios += "     Cod proveedor\n";
+        }
+        if (et_nom_proveedor.getText().equalsIgnoreCase("")){
+            vacios += "     Nombre proveedor\n";
+        }
+        if (et_ape_proveedor.getText().equalsIgnoreCase("")){
+            vacios += "     Apellidos proveedor\n";
+        }
+        if (et_dir_proveedor.getText().equalsIgnoreCase("")){
+            vacios += "     Dirección proveedor\n";
+        }
+        vacios += "\nIntroduce los datos de los campos anteriores\n";
+        return vacios;
+    }
+
+    public void MensajePersonalizado(String titulo, String mensaje, int tipo) {
+        JButton okButton = new JButton("OK");
+        okButton.setFocusPainted(false);
+        Object[] options = {okButton};
+        final JOptionPane pane = new JOptionPane(mensaje, tipo, JOptionPane.YES_NO_OPTION, null, options);
+        JDialog dialog = pane.createDialog(titulo);
+        okButton.addActionListener(e -> dialog.dispose());
+        dialog.setVisible(true);
+    }
     public JPanel getVPanelGestionProveedores() {
         return VPanelGestionProveedores;
     }
