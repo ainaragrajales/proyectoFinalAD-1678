@@ -84,4 +84,9 @@ public class ProveedoresEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(idProv, nombre, apellidos, dir);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(idProv);
+    }
 }

@@ -1,8 +1,6 @@
 package com.ainara;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class VGestionProveedores {
@@ -42,7 +40,7 @@ public class VGestionProveedores {
 
     public VGestionProveedores(){
 
-        CargarTodo();
+        CargarLista();
 
         //Pestaña Gestión Proveedores
 
@@ -53,16 +51,13 @@ public class VGestionProveedores {
             et_dir_proveedor.setText("");
         });
         b_insertar_proveedor.addActionListener(e -> {
-            //et_cod_proveedor.setEnabled(false);
             if (!ComprobarCamposVacios()){
-                //Igual hay que modificarlo y mostrar que campos están vacíos, ej: cod o nombre...
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
-                //MensajePersonalizado("Campos vacíos", "No puede haber campos vacíos, compruebalos", 0);
             } else {
                 proveedor = new ProveedoresEntity(et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
                 listaProveedores.add(proveedor);
                 new Cargas().insertarProveedor(proveedor);
-                CargarTodo();
+                CargarLista();
             }
         });
         b_modificar_proveedor.addActionListener(e -> {
@@ -73,7 +68,7 @@ public class VGestionProveedores {
                 proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
                 listaProveedores.add(proveedor);
                 new Cargas().modificarProveedor(proveedor);
-                CargarTodo();
+                CargarLista();
             }
         });
         b_eliminar_proveedor.addActionListener(e -> {
@@ -84,7 +79,11 @@ public class VGestionProveedores {
                 proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
                 listaProveedores.remove(proveedor);
                 new Cargas().eliminarProveedor(cod_prov);
-                CargarTodo();
+                CargarLista();
+                et_cod_proveedor.setText("");
+                et_nom_proveedor.setText("");
+                et_ape_proveedor.setText("");
+                et_dir_proveedor.setText("");
             }
         });
 
@@ -157,21 +156,18 @@ public class VGestionProveedores {
                 proveedor = new ProveedoresEntity(cod_prov, et_nomList_proveedor.getText(), et_apeList_proveedor.getText(), et_dirList_proveedor.getText());
                 listaProveedores.remove(proveedor);
                 new Cargas().eliminarProveedor(cod_prov);
-                CargarTodo();
+                CargarLista();
+                et_codList_proveedor.setText("");
+                et_nomList_proveedor.setText("");
+                et_apeList_proveedor.setText("");
+                et_dirList_proveedor.setText("");
             }
         });
     }
 
-    public void CargarTodo(){
-        CargarDatos();
-
-    }
-
-    public void CargarDatos(){
+    public void CargarLista(){
         listaProveedores = new Cargas().listaProveedores();
-        /*listaPiezas = new Cargas().listaPiezas();
-        listaProyectos = new Cargas().listaProyectos();
-        listaGestiones = new Cargas().listaGestiones();*/
+
     }
 
     private boolean ComprobarCamposVacios(){
@@ -209,15 +205,6 @@ public class VGestionProveedores {
         return vacios;
     }
 
-    public void MensajePersonalizado(String titulo, String mensaje, int tipo) {
-        JButton okButton = new JButton("OK");
-        okButton.setFocusPainted(false);
-        Object[] options = {okButton};
-        final JOptionPane pane = new JOptionPane(mensaje, tipo, JOptionPane.YES_NO_OPTION, null, options);
-        JDialog dialog = pane.createDialog(titulo);
-        okButton.addActionListener(e -> dialog.dispose());
-        dialog.setVisible(true);
-    }
     public JPanel getVPanelGestionProveedores() {
         return VPanelGestionProveedores;
     }
