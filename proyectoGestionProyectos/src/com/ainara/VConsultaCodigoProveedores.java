@@ -36,6 +36,11 @@ public class VConsultaCodigoProveedores {
                 textArea_prov.setText(proveedorString);
             }
         });
+        et_cod_prov.addActionListener(e -> {
+            comboBox_cod_prov.removeAllItems();
+            textArea_prov.setText("");
+            listaProveedoresCod.clear();
+        });
     }
 
     public void buscarPorCod(int cod){

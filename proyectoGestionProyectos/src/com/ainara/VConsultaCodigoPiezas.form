@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ainara.VConsultaDireccionProveedores">
-  <grid id="27dc6" binding="VPanelConsDirProveedores" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ainara.VConsultaCodigoPiezas">
+  <grid id="27dc6" binding="VPanelConsCodPiezas" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="517" height="400"/>
+      <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="deefb" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="d68fb" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -16,15 +16,15 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="defb8" class="javax.swing.JLabel">
+          <component id="1fdff" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Escribe la dirección o parte de la dirección"/>
+              <text value="Escribe el código o parte del código"/>
             </properties>
           </component>
-          <component id="782d2" class="javax.swing.JTextField" binding="et_dir_prov">
+          <component id="d6a3e" class="javax.swing.JTextField" binding="et_cod_pieza">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="60" height="-1"/>
@@ -32,17 +32,17 @@
             </constraints>
             <properties/>
           </component>
-          <component id="a6175" class="javax.swing.JButton" binding="buscarProveedorButton" default-binding="true">
+          <component id="c9c03" class="javax.swing.JButton" binding="buscarPiezaButton">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Buscar Proveedor"/>
+              <text value="Buscar Pieza"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="cccc5" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="9abc3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -50,7 +50,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="a0aec" class="javax.swing.JComboBox" binding="comboBox_dir_prov">
+          <component id="355be" class="javax.swing.JComboBox" binding="comboBox_cod_pieza">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="8" use-parent-layout="false">
                 <preferred-size width="220" height="-1"/>
@@ -58,7 +58,7 @@
             </constraints>
             <properties/>
           </component>
-          <hspacer id="fb3ac">
+          <hspacer id="6ea37">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="80" height="-1"/>
@@ -67,7 +67,7 @@
           </hspacer>
         </children>
       </grid>
-      <grid id="f1631" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="6316e" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -75,7 +75,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="50bb5" class="javax.swing.JTextArea" binding="textArea_prov">
+          <component id="542a2" class="javax.swing.JTextArea" binding="textArea_pieza">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="2" use-parent-layout="false">
                 <preferred-size width="350" height="250"/>
@@ -83,7 +83,7 @@
             </constraints>
             <properties/>
           </component>
-          <vspacer id="32c27">
+          <vspacer id="62162">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="20"/>

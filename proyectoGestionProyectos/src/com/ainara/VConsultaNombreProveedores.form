@@ -24,7 +24,7 @@
               <text value="Escribe el nombre o parte del nombre"/>
             </properties>
           </component>
-          <component id="c466d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="c466d" class="javax.swing.JTextField" binding="et_nom_prov">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="60" height="-1"/>
@@ -50,7 +50,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="95ea3" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+          <component id="95ea3" class="javax.swing.JComboBox" binding="comboBox_nom_prov">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="8" use-parent-layout="false">
                 <preferred-size width="220" height="-1"/>
@@ -75,7 +75,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="fc705" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+          <component id="fc705" class="javax.swing.JTextArea" binding="textArea_prov">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="2" use-parent-layout="false">
                 <preferred-size width="350" height="250"/>

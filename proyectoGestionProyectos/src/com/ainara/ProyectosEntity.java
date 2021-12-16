@@ -11,6 +11,20 @@ public class ProyectosEntity implements Serializable {
     private String nombre;
     private String ciudad;
 
+    public ProyectosEntity() {
+    }
+
+    public ProyectosEntity(int idProyecto, String nombre, String ciudad) {
+        this.idProyecto = idProyecto;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+    }
+
+    public ProyectosEntity(String nombre, String ciudad) {
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+    }
+
     @Id
     @Column(name = "id_proyecto", nullable = false)
     public int getIdProyecto() {
@@ -52,5 +66,10 @@ public class ProyectosEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idProyecto, nombre, ciudad);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(idProyecto);
     }
 }

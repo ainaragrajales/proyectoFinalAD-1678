@@ -12,6 +12,22 @@ public class PiezasEntity implements Serializable {
     private double precio;
     private String descripcion;
 
+    public PiezasEntity() {
+    }
+
+    public PiezasEntity(int idPieza, String nombre, double precio, String descripcion) {
+        this.idPieza = idPieza;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+    }
+
+    public PiezasEntity(String nombre, double precio, String descripcion) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+    }
+
     @Id
     @Column(name = "id_pieza", nullable = false)
     public int getIdPieza() {
@@ -63,5 +79,10 @@ public class PiezasEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idPieza, nombre, precio, descripcion);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(idPieza);
     }
 }

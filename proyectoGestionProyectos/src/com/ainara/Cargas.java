@@ -74,9 +74,6 @@ public class Cargas {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
-        //System.out.println("Inserto un Proveedor.");
-
-
         try {
             session.save(proveedor);
 
@@ -97,17 +94,9 @@ public class Cargas {
         session.close();
     }
 
-    public void insertarPieza(int id, String nombre, String descrip, double precio) {
+    public void insertarPieza(PiezasEntity pieza) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
-
-        System.out.println("Inserto un EMPLEADO EN EL DEPARTAMENTO 10.");
-
-        PiezasEntity pieza = new PiezasEntity();
-        pieza.setIdPieza(id);
-        pieza.setNombre(nombre);
-        pieza.setDescripcion(descrip);
-        pieza.setPrecio(precio);
 
         try {
             session.save(pieza);
@@ -129,16 +118,11 @@ public class Cargas {
         session.close();
     }
 
-    public void insertarProyecto(int id, String nombre, String ciudad) {
+    public void insertarProyecto(ProyectosEntity proyecto) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
         System.out.println("Inserto un Proyecto");
-
-        ProyectosEntity proyecto = new ProyectosEntity();
-        proyecto.setIdProyecto(id);
-        proyecto.setNombre(nombre);
-        proyecto.setCiudad(ciudad);
 
         try {
             session.save(proyecto);
@@ -160,21 +144,14 @@ public class Cargas {
         session.close();
     }
 
-    public void insertarGestion(int id, ProveedoresEntity prov, PiezasEntity piez, ProyectosEntity proy, double cant) {
+    public void insertarGestion(GestionEntity gestion) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
-        System.out.println("Inserto un EMPLEADO EN EL DEPARTAMENTO 10.");
-
-        GestionEntity gest = new GestionEntity();
-        gest.setIdGestion(id);
-        gest.setProveedoresByCodProv(prov);
-        gest.setPiezasByCodPieza(piez);
-        gest.setProyectosByCodProyecto(proy);
-        gest.setCantidad(cant);
+        System.out.println("Inserto una gestión.");
 
         try {
-            session.save(gest);
+            session.save(gestion);
 
             try {
                 tx.commit();
@@ -221,21 +198,17 @@ public class Cargas {
         }
     }
 
-    public void modificarPieza(int id, String nombre, String desc, double precio) {
+    public void modificarPieza(PiezasEntity pieza) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
-        PiezasEntity pieza = new PiezasEntity();
+
 
         try {
-            pieza = session.load(PiezasEntity.class, id);
+            pieza = session.load(PiezasEntity.class, pieza.getIdPieza());
             if (pieza == null) {
                 System.out.println("La pieza no existe");
-                //JOptioPanel
+                JOptionPane.showMessageDialog(null, "No existe la pieza con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
             } else {
-                pieza.setNombre(nombre);
-                pieza.setDescripcion(desc);
-                pieza.setPrecio(precio);
-
                 session.update(pieza);
                 tx.commit();
             }
@@ -252,20 +225,17 @@ public class Cargas {
         }
     }
 
-    public void modificarProyecto(int id, String nombre, String ciudad) {
+    public void modificarProyecto(ProyectosEntity proyecto) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
-        ProyectosEntity proyecto = new ProyectosEntity();
+
 
         try {
-            proyecto = session.load(ProyectosEntity.class, id);
+            proyecto = session.load(ProyectosEntity.class, proyecto.getIdProyecto());
             if (proyecto == null) {
                 System.out.println("El proyecto no existe");
-                //JOptioPanel
+                JOptionPane.showMessageDialog(null, "No existe el proyecto con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
             } else {
-                proyecto.setNombre(nombre);
-                proyecto.setCiudad(ciudad);
-
                 session.update(proyecto);
                 tx.commit();
             }
@@ -282,7 +252,7 @@ public class Cargas {
         }
     }
 
-    public void modificarGestion() {
+    public void modificarGestion(GestionEntity gestion) {
     }
 
     public void eliminarProveedor(int id) {
@@ -352,95 +322,6 @@ public class Cargas {
     }
 
     public void eliminarGestion() {
-    }
-
-    public void consultaProveedorPorCod(int cod) {
-
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from ProveedoresEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaProveedorPorNombre() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaProveedorPorDir() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaPiezaPorCod() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaPiezaPorNombre() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaProyectoPorCod() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaProyectoPorNombre() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
-    }
-
-    public void consultaProyectoPorCiudad() {
-        /*
-        //Muestra el apellido y oficio del empleado con número 7369
-        String hql = "from EmpleadosEntity where dni = :numemple";
-        Query q = session.createQuery (hql);
-        q.setParameter("numemple",  "12345678A");
-        EmpleadosEntity emple = (EmpleadosEntity) q.uniqueResult(); //uniqueResult() se utiliza cuando sabemos que nosva a devolver un único registro
-        System.out.printf ("%s, %s %n",emple.getNombre(), emple.getCodDepartamento());
-        */
     }
 
     //Faltan las consultas de gestion
