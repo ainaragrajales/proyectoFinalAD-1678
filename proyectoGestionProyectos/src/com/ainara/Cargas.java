@@ -180,7 +180,7 @@ public class Cargas {
 
             if (proveedor == null) {
                 System.out.println("El proveedor no existe");
-                JOptionPane.showMessageDialog(null, "No existe el proveedor con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No existe el proveedor con ese código", "No existe", JOptionPane.WARNING_MESSAGE);
             } else {
                 session.update(proveedor);
                 tx.commit();
@@ -207,7 +207,7 @@ public class Cargas {
             pieza = session.load(PiezasEntity.class, pieza.getIdPieza());
             if (pieza == null) {
                 System.out.println("La pieza no existe");
-                JOptionPane.showMessageDialog(null, "No existe la pieza con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No existe la pieza con ese código", "No existe", JOptionPane.WARNING_MESSAGE);
             } else {
                 session.update(pieza);
                 tx.commit();
@@ -234,7 +234,7 @@ public class Cargas {
             proyecto = session.load(ProyectosEntity.class, proyecto.getIdProyecto());
             if (proyecto == null) {
                 System.out.println("El proyecto no existe");
-                JOptionPane.showMessageDialog(null, "No existe el proyecto con ese código", "No existe",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No existe el proyecto con ese código", "No existe", JOptionPane.WARNING_MESSAGE);
             } else {
                 session.update(proyecto);
                 tx.commit();
@@ -253,6 +253,25 @@ public class Cargas {
     }
 
     public void modificarGestion(GestionEntity gestion) {
+        Session session = sesion.openSession();
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+
+            session.update(gestion);
+            tx.commit();
+
+
+        } catch (ObjectNotFoundException o) {
+            System.out.println("El proyecto no existe");
+        } catch (ConstraintViolationException c) {
+            System.out.println("Error");
+            //System.out.println("No se puede asignar un departamento que no existe");
+        } catch (Exception e) {
+            System.out.println("Error no controlado");
+            e.printStackTrace();
+        }
     }
 
     public void eliminarProveedor(int id) {
@@ -321,7 +340,25 @@ public class Cargas {
         session.close();
     }
 
-    public void eliminarGestion() {
+    public void eliminarGestion(GestionEntity gestion) {
+        Session session = sesion.openSession();
+        Transaction tx = session.beginTransaction();
+
+        try {
+            session.delete(gestion);
+            tx.commit();
+        } catch (ObjectNotFoundException o) {
+            System.out.println("No existe el proveedor");
+        } catch (ConstraintViolationException c) {
+            System.out.println("No se puede eliminar, tiene gestiones asignadas");
+        } catch (PersistenceException p) {
+            System.out.println("Error, tiene gestiones, primero tienes que quitarlos de este proveedor");
+        } catch (Exception e) {
+            System.out.println("Error no controlado");
+            e.printStackTrace();
+        }
+        session.close();
+
     }
 
     //Faltan las consultas de gestion

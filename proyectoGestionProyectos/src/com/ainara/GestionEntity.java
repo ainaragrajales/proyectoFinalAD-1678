@@ -13,6 +13,24 @@ public class GestionEntity implements Serializable {
     private PiezasEntity piezasByCodPieza;
     private ProyectosEntity proyectosByCodProyecto;
 
+    public GestionEntity() {
+    }
+
+    public GestionEntity(int idGestion, Double cantidad, ProveedoresEntity proveedoresByCodProv, PiezasEntity piezasByCodPieza, ProyectosEntity proyectosByCodProyecto) {
+        this.idGestion = idGestion;
+        this.cantidad = cantidad;
+        this.proveedoresByCodProv = proveedoresByCodProv;
+        this.piezasByCodPieza = piezasByCodPieza;
+        this.proyectosByCodProyecto = proyectosByCodProyecto;
+    }
+
+    public GestionEntity(Double cantidad, ProveedoresEntity proveedoresByCodProv, PiezasEntity piezasByCodPieza, ProyectosEntity proyectosByCodProyecto) {
+        this.cantidad = cantidad;
+        this.proveedoresByCodProv = proveedoresByCodProv;
+        this.piezasByCodPieza = piezasByCodPieza;
+        this.proyectosByCodProyecto = proyectosByCodProyecto;
+    }
+
     @Id
     @Column(name = "id_gestion", nullable = false)
     public int getIdGestion() {
