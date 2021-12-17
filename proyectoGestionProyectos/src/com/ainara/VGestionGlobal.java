@@ -190,15 +190,15 @@ public class VGestionGlobal {
     public void cargarComboboxPiezas(){
         DefaultComboBoxModel<PiezasEntity> piezasModel = new DefaultComboBoxModel<>();
 
-        for (PiezasEntity proveedor: listaPiezas) {
-            piezasModel.addElement(proveedor);
+        for (PiezasEntity pieza: listaPiezas) {
+            piezasModel.addElement(pieza);
         }
         comboBox_pieza.setModel(piezasModel);
     }
     public void cargarComboboxProyectos(){
         DefaultComboBoxModel<ProyectosEntity> proyectosModel = new DefaultComboBoxModel<>();
 
-        for (ProyectosEntity proveedor: listaProyectos) {
+        for (ProyectosEntity proyecto: listaProyectos) {
             proyectosModel.addElement(proyecto);
         }
         comboBox_proy.setModel(proyectosModel);

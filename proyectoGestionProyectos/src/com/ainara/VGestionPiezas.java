@@ -139,7 +139,7 @@ public class VGestionPiezas {
         b_next_pieza.addActionListener(e -> {
             int total = listaPiezas.size() - 1;
             if (indice > 0 && indice <= total) {
-                int next_indice = indice - 1;
+                int next_indice = indice + 1;
                 PiezasEntity piezaNueva = listaPiezas.get(next_indice);
                 et_codList_pieza.setText(String.valueOf(piezaNueva.getIdPieza()));
                 et_nomList_pieza.setText(piezaNueva.getNombre());

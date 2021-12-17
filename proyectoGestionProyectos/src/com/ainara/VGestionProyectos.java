@@ -131,7 +131,7 @@ public class VGestionProyectos {
         b_next_proyecto.addActionListener(e -> {
             int total = listaProyectos.size() - 1;
             if (indice >= 0 && indice < total) {
-                int next_indice = indice - 1;
+                int next_indice = indice + 1;
                 ProyectosEntity proyNuevo = listaProyectos.get(next_indice);
 
                 et_codList_proyecto.setText(String.valueOf(proyNuevo.getIdProyecto()));
