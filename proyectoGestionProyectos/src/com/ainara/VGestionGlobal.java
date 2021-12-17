@@ -99,7 +99,7 @@ public class VGestionGlobal {
                     pieza = (PiezasEntity) comboBox_pieza.getSelectedItem();
                     proyecto = (ProyectosEntity) comboBox_proy.getSelectedItem();
                     gestion = new GestionEntity(id, Double.parseDouble(et_cant.getText()), proveedor, pieza, proyecto);
-                    new Cargas().eliminarGestion(gestion);
+                    new Cargas().eliminarGestion(id);
                     CargarTodo();
                 }
 

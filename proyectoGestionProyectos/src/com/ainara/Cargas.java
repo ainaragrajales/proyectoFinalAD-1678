@@ -340,10 +340,11 @@ public class Cargas {
         session.close();
     }
 
-    public void eliminarGestion(GestionEntity gestion) {
+    public void eliminarGestion(int id) {
         Session session = sesion.openSession();
         Transaction tx = session.beginTransaction();
 
+        GestionEntity gestion = session.load(GestionEntity.class, id);
         try {
             session.delete(gestion);
             tx.commit();
