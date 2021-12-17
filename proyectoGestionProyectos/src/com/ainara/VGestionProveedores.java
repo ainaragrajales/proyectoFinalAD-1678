@@ -54,6 +54,19 @@ public class VGestionProveedores {
             if (!ComprobarCamposVacios()){
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
+                if (!longitudString(20, et_nom_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "EL nombre del proveedor es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_nom_proveedor.setText("");
+                }
+                if (!longitudString(30, et_ape_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "EL apellido del proveedor es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_ape_proveedor.setText("");
+                }
+                if (!longitudString(40, et_dir_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "La dirección del proveedor es muy larga, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_dir_proveedor.setText("");
+                }
+
                 proveedor = new ProveedoresEntity(et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
                 listaProveedores.add(proveedor);
                 new Cargas().insertarProveedor(proveedor);
@@ -64,6 +77,18 @@ public class VGestionProveedores {
             if (!ComprobarCamposVacios()){
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
+                if (!longitudString(20, et_nom_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "EL nombre del proveedor es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_nom_proveedor.setText("");
+                }
+                if (!longitudString(30, et_ape_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "EL apellido del proveedor es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_ape_proveedor.setText("");
+                }
+                if (!longitudString(40, et_dir_proveedor.getText())){
+                    JOptionPane.showMessageDialog(null, "La dirección del proveedor es muy larga, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_dir_proveedor.setText("");
+                }
                 int cod_prov = Integer.parseInt(et_cod_proveedor.getText());
                 proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
                 listaProveedores.add(proveedor);
@@ -184,6 +209,15 @@ public class VGestionProveedores {
             }
         }
         return hayDato;
+    }
+
+    private boolean longitudString(int longitud, String texto){
+        boolean correcto = true;
+        byte[] texto_byte = texto.getBytes();
+        if (texto_byte.length > longitud){
+            correcto = false;
+        }
+        return correcto;
     }
 
     private String CamposVacios(){

@@ -46,21 +46,41 @@ public class VGestionProyectos {
             if (!ComprobarCamposVacios()){
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
-                proyecto = new ProyectosEntity(et_nom_proyecto.getText(), et_ciudad_proyecto.getText());
-                listaProyectos.add(proyecto);
-                new Cargas().insertarProyecto(proyecto);
-                CargarLista();
+                if (!longitudString(40, et_nom_proyecto.getText())){
+                    JOptionPane.showMessageDialog(null, "El nombre del proyecto es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_nom_proyecto.setText("");
+                }
+                if (!longitudString(40, et_ciudad_proyecto.getText())){
+                    JOptionPane.showMessageDialog(null, "EL nombre de la ciudad es muy larga, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                    et_ciudad_proyecto.setText("");
+                }
+                if (longitudString(40, et_nom_proyecto.getText()) && longitudString(40, et_ciudad_proyecto.getText())){
+                    proyecto = new ProyectosEntity(et_nom_proyecto.getText(), et_ciudad_proyecto.getText());
+                    listaProyectos.add(proyecto);
+                    new Cargas().insertarProyecto(proyecto);
+                    CargarLista();
+                }
+
             }
         });
         b_modificar_proyecto.addActionListener(e -> {
             if (!ComprobarCamposVacios()){
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
-                int cod_proy = Integer.parseInt(et_cod_proyecto.getText());
-                proyecto = new ProyectosEntity(cod_proy, et_nom_proyecto.getText(), et_ciudad_proyecto.getText());
-                listaProyectos.add(proyecto);
-                new Cargas().modificarProyecto(proyecto);
-                CargarLista();
+                if (!longitudString(40, et_nom_proyecto.getText())){
+                    JOptionPane.showMessageDialog(null, "El nombre del proyecto es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                }
+                if (!longitudString(40, et_ciudad_proyecto.getText())){
+                    JOptionPane.showMessageDialog(null, "EL nombre de la ciudad es muy larga, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                }
+                if (longitudString(40, et_nom_proyecto.getText()) && longitudString(40, et_ciudad_proyecto.getText())){
+                    int cod_proy = Integer.parseInt(et_cod_proyecto.getText());
+                    proyecto = new ProyectosEntity(cod_proy, et_nom_proyecto.getText(), et_ciudad_proyecto.getText());
+                    listaProyectos.add(proyecto);
+                    new Cargas().modificarProyecto(proyecto);
+                    CargarLista();
+                }
+
             }
         });
         b_eliminar_proyecto.addActionListener(e -> {
@@ -162,6 +182,15 @@ public class VGestionProyectos {
             }
         }
         return hayDato;
+    }
+
+    private boolean longitudString(int longitud, String texto){
+        boolean correcto = true;
+        byte[] texto_byte = texto.getBytes();
+        if (texto_byte.length > longitud){
+            correcto = false;
+        }
+        return correcto;
     }
 
     private String CamposVacios(){

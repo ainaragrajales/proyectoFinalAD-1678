@@ -51,7 +51,7 @@ public class VGestionGlobal {
                 pieza = (PiezasEntity) comboBox_pieza.getSelectedItem();
                 proyecto = (ProyectosEntity) comboBox_proy.getSelectedItem();
                 if (!numeroCorrecto(et_cant.getText())){
-                    JOptionPane.showMessageDialog(null, "Introduce un numero entero en la cantidad.", "Campos erroneos", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Introduce un valor válido en la cantidad.", "Campos erroneos", JOptionPane.ERROR_MESSAGE);
                     et_cant.setText("");
                 } else {
                     if (proveedor != null && pieza != null && proyecto != null){

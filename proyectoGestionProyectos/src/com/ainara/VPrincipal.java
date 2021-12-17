@@ -2,8 +2,7 @@ package com.ainara;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class VPrincipal {
     private JMenuBar menu_bar;
@@ -153,10 +152,16 @@ public class VPrincipal {
 
         //Botones que llevan a las ventanas de Gestión Global
         item_relacionar_gestion.addActionListener(e -> {
-
+            JFrame frame_relacionar_gestion = new JFrame("Relacionar Gestión");
+            frame_relacionar_gestion.setContentPane(new VGestionGlobal().getVPanelGestionGlobal());
+            frame_relacionar_gestion.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra la ventana pero no el programa
+            frame_relacionar_gestion.setMinimumSize(new Dimension(400, 200)); // Lo ajusto a un tamaño para que se vea bien
+            frame_relacionar_gestion.setLocationRelativeTo(null); // Saca la ventana al centro
+            frame_relacionar_gestion.pack();
+            frame_relacionar_gestion.setVisible(true);
         });
 
-        item_suministroProveedores_gestion.addActionListener(e -> {
+        /*item_suministroProveedores_gestion.addActionListener(e -> {
 
         });
 
@@ -166,7 +171,7 @@ public class VPrincipal {
 
         item_estadisticas_gestion.addActionListener(e -> {
             
-        });
+        });*/
     }
 
     public static void main(String[] args) {

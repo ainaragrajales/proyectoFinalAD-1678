@@ -50,21 +50,41 @@ public class VGestionPiezas {
             if (!ComprobarCamposVacios()) {
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
-                pieza = new PiezasEntity(et_nom_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_desc_pieza.getText());
-                listaPiezas.add(pieza);
-                new Cargas().insertarPieza(pieza);
-                CargarLista();
+                if (!numeroCorrecto(et_precio_pieza.getText())){
+                    JOptionPane.showMessageDialog(null, "Introduce un valor válido en el precio.", "Campos erroneos", JOptionPane.ERROR_MESSAGE);
+                    et_precio_pieza.setText("");
+                } else {
+                    if (!longitudString(20, et_nom_pieza.getText())){
+                        JOptionPane.showMessageDialog(null, "EL nombre de la pieza es muy largo, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                        et_nom_pieza.setText("");
+                    }
+                    pieza = new PiezasEntity(et_nom_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_desc_pieza.getText());
+                    listaPiezas.add(pieza);
+                    new Cargas().insertarPieza(pieza);
+                    CargarLista();
+                }
+
             }
         });
         b_modificar_pieza.addActionListener(e -> {
             if (!ComprobarCamposVacios()) {
                 JOptionPane.showMessageDialog(null, CamposVacios(), "Campos vacios", JOptionPane.WARNING_MESSAGE);
             } else {
-                int cod_prov = Integer.parseInt(et_cod_pieza.getText());
-                pieza = new PiezasEntity(cod_prov, et_nom_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_desc_pieza.getText());
-                listaPiezas.add(pieza);
-                new Cargas().modificarPieza(pieza);
-                CargarLista();
+                if (!numeroCorrecto(et_precio_pieza.getText())){
+                    JOptionPane.showMessageDialog(null, "Introduce un valor válido en el precio.", "Campos erroneos", JOptionPane.ERROR_MESSAGE);
+                    et_precio_pieza.setText("");
+                } else {
+                    if (!longitudString(20, et_nom_pieza.getText())){
+                        JOptionPane.showMessageDialog(null, "EL nombre de la ciudad es muy larga, tiene que ser menor de 40 carácteres", "Error longitud String", JOptionPane.WARNING_MESSAGE);
+                        et_nom_pieza.setText("");
+                    }
+                    int cod_prov = Integer.parseInt(et_cod_pieza.getText());
+                    pieza = new PiezasEntity(cod_prov, et_nom_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_desc_pieza.getText());
+                    listaPiezas.add(pieza);
+                    new Cargas().modificarPieza(pieza);
+                    CargarLista();
+                }
+
             }
         });
         b_eliminar_pieza.addActionListener(e -> {
@@ -160,6 +180,14 @@ public class VGestionPiezas {
         listaPiezas = new Cargas().listaPiezas();
 
     }
+    private boolean longitudString(int longitud, String texto){
+        boolean correcto = true;
+        byte[] texto_byte = texto.getBytes();
+        if (texto_byte.length > longitud){
+            correcto = false;
+        }
+        return correcto;
+    }
 
     private boolean ComprobarCamposVacios() {
         boolean hayDato = true;
@@ -194,6 +222,20 @@ public class VGestionPiezas {
         }
         vacios += "\nIntroduce los datos de los campos anteriores\n";
         return vacios;
+    }
+
+    private boolean numeroCorrecto(String numero) {
+        boolean correcto = true;
+        try {
+            Double comprobaNumero = Double.parseDouble(numero);
+        } catch (NumberFormatException e) {
+            //e.printStackTrace();
+            System.out.println("Error !!, número incorrecto");
+            correcto = false;
+        }
+
+
+        return correcto;
     }
 
     public JPanel getVPanelGestionPiezas() {
