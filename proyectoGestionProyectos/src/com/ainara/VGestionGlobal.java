@@ -55,7 +55,8 @@ public class VGestionGlobal {
                     et_cant.setText("");
                 } else {
                     if (proveedor != null && pieza != null && proyecto != null){
-                        gestion = new GestionEntity( Double.parseDouble(et_cant.getText()), proveedor, pieza, proyecto);
+                        int id = Integer.parseInt(et_id_gest.getText());
+                        gestion = new GestionEntity(id, Double.parseDouble(et_cant.getText()), proveedor, pieza, proyecto);
                         new Cargas().insertarGestion(gestion);
                         CargarTodo();
                     } else {
