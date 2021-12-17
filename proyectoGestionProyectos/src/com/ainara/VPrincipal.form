@@ -190,7 +190,14 @@
               <text value="Ayuda"/>
             </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <component id="4f99" class="javax.swing.JMenuItem" binding="informacion">
+                <constraints/>
+                <properties>
+                  <text value="Información"/>
+                </properties>
+              </component>
+            </children>
           </grid>
         </children>
       </grid>

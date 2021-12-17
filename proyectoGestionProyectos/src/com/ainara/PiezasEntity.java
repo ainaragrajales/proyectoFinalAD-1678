@@ -12,6 +12,10 @@ public class PiezasEntity implements Serializable {
     private double precio;
     private String descripcion;
 
+    public PiezasEntity(int idPieza) {
+        this.idPieza = idPieza;
+    }
+
     public PiezasEntity() {
     }
 

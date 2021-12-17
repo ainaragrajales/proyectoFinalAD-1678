@@ -2,6 +2,8 @@ package com.ainara;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class VPrincipal {
@@ -30,6 +32,8 @@ public class VPrincipal {
     private JMenuItem item_suministrosPiezas_gestion;
     private JMenuItem item_estadisticas_gestion;
     private JPanel VPanelPrincipal;
+    private JMenuItem informacion;
+    private JMenuItem Información;
 
 
     public VPrincipal() {
@@ -172,6 +176,9 @@ public class VPrincipal {
         item_estadisticas_gestion.addActionListener(e -> {
             
         });*/
+        informacion.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Proyecto creado por: Ainara Grajales\nSe ha utilizado Hibernate para la base de datos\nCurso 3º de DAM 21/22", "Información", JOptionPane.INFORMATION_MESSAGE);
+        });
     }
 
     public static void main(String[] args) {

@@ -88,18 +88,20 @@ public class VGestionPiezas {
             }
         });
         b_eliminar_pieza.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_cod_pieza.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION) {
-                int cod_pieza = Integer.parseInt(et_cod_pieza.getText());
-                pieza = new PiezasEntity(cod_pieza, et_nom_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_desc_pieza.getText());
-                listaPiezas.remove(pieza);
-                new Cargas().eliminarPieza(cod_pieza);
-                CargarLista();
-                et_cod_pieza.setText("");
-                et_nom_pieza.setText("");
-                et_precio_pieza.setText("");
-                et_desc_pieza.setText("");
+                if (opcion == JOptionPane.YES_OPTION) {
+                    int cod_pieza = Integer.parseInt(et_cod_pieza.getText());
+                    pieza = new PiezasEntity(cod_pieza);
+                    listaPiezas.remove(pieza);
+                    new Cargas().eliminarPieza(cod_pieza);
+                    CargarLista();
+                    et_cod_pieza.setText("");
+                    et_nom_pieza.setText("");
+                    et_precio_pieza.setText("");
+                    et_desc_pieza.setText("");
+                }
             }
         });
 
@@ -160,18 +162,20 @@ public class VGestionPiezas {
 
         });
         b_baja_pieza.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_codList_pieza.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION){
-                int cod_pieza = Integer.parseInt(et_codList_pieza.getText());
-                pieza = new PiezasEntity(cod_pieza, et_nomList_pieza.getText(), Double.parseDouble(et_precio_pieza.getText()), et_descList_pieza.getText());
-                listaPiezas.remove(pieza);
-                new Cargas().eliminarProveedor(cod_pieza);
-                CargarLista();
-                et_codList_pieza.setText("");
-                et_nomList_pieza.setText("");
-                et_precioList_pieza.setText("");
-                et_descList_pieza.setText("");
+                if (opcion == JOptionPane.YES_OPTION){
+                    int cod_pieza = Integer.parseInt(et_codList_pieza.getText());
+                    pieza = new PiezasEntity(cod_pieza);
+                    listaPiezas.remove(pieza);
+                    new Cargas().eliminarProveedor(cod_pieza);
+                    CargarLista();
+                    et_codList_pieza.setText("");
+                    et_nomList_pieza.setText("");
+                    et_precioList_pieza.setText("");
+                    et_descList_pieza.setText("");
+                }
             }
         });
     }

@@ -11,6 +11,10 @@ public class ProyectosEntity implements Serializable {
     private String nombre;
     private String ciudad;
 
+    public ProyectosEntity(int idProyecto) {
+        this.idProyecto = idProyecto;
+    }
+
     public ProyectosEntity() {
     }
 

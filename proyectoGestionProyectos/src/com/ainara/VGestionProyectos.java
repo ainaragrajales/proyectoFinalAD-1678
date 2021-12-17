@@ -84,17 +84,19 @@ public class VGestionProyectos {
             }
         });
         b_eliminar_proyecto.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_cod_proyecto.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION){
-                int cod_prov = Integer.parseInt(et_cod_proyecto.getText());
-                proyecto = new ProyectosEntity(cod_prov, et_nom_proyecto.getText(), et_ciudad_proyecto.getText());
-                listaProyectos.remove(proyecto);
-                new Cargas().eliminarProyecto(cod_prov);
-                CargarLista();
-                et_cod_proyecto.setText("");
-                et_nom_proyecto.setText("");
-                et_ciudad_proyecto.setText("");
+                if (opcion == JOptionPane.YES_OPTION){
+                    int cod_prov = Integer.parseInt(et_cod_proyecto.getText());
+                    proyecto = new ProyectosEntity(cod_prov);
+                    listaProyectos.remove(proyecto);
+                    new Cargas().eliminarProyecto(cod_prov);
+                    CargarLista();
+                    et_cod_proyecto.setText("");
+                    et_nom_proyecto.setText("");
+                    et_ciudad_proyecto.setText("");
+                }
             }
         });
 
@@ -149,17 +151,19 @@ public class VGestionProyectos {
             indice = total-1;
         });
         b_baja_proyecto.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_codList_proyecto.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION){
-                int cod_prov = Integer.parseInt(et_codList_proyecto.getText());
-                proyecto = new ProyectosEntity(cod_prov, et_nomList_proyecto.getText(), et_ciudList_proyecto.getText());
-                listaProyectos.remove(proyecto);
-                new Cargas().eliminarProyecto(cod_prov);
-                CargarLista();
-                et_codList_proyecto.setText("");
-                et_nomList_proyecto.setText("");
-                et_ciudList_proyecto.setText("");
+                if (opcion == JOptionPane.YES_OPTION){
+                    int cod_prov = Integer.parseInt(et_codList_proyecto.getText());
+                    proyecto = new ProyectosEntity(cod_prov);
+                    listaProyectos.remove(proyecto);
+                    new Cargas().eliminarProyecto(cod_prov);
+                    CargarLista();
+                    et_codList_proyecto.setText("");
+                    et_nomList_proyecto.setText("");
+                    et_ciudList_proyecto.setText("");
+                }
             }
         });
     }

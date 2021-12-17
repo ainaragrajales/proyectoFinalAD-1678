@@ -97,18 +97,20 @@ public class VGestionProveedores {
             }
         });
         b_eliminar_proveedor.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_cod_proveedor.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION){
-                int cod_prov = Integer.parseInt(et_cod_proveedor.getText());
-                proveedor = new ProveedoresEntity(cod_prov, et_nom_proveedor.getText(), et_ape_proveedor.getText(), et_dir_proveedor.getText());
-                listaProveedores.remove(proveedor);
-                new Cargas().eliminarProveedor(cod_prov);
-                CargarLista();
-                et_cod_proveedor.setText("");
-                et_nom_proveedor.setText("");
-                et_ape_proveedor.setText("");
-                et_dir_proveedor.setText("");
+                if (opcion == JOptionPane.YES_OPTION){
+                    int cod_prov = Integer.parseInt(et_cod_proveedor.getText());
+                    proveedor = new ProveedoresEntity(cod_prov);
+                    listaProveedores.remove(proveedor);
+                    new Cargas().eliminarProveedor(cod_prov);
+                    CargarLista();
+                    et_cod_proveedor.setText("");
+                    et_nom_proveedor.setText("");
+                    et_ape_proveedor.setText("");
+                    et_dir_proveedor.setText("");
+                }
             }
         });
 
@@ -174,18 +176,20 @@ public class VGestionProveedores {
             indice = total - 1;
         });
         b_baja_proveedor.addActionListener(e -> {
-            int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if (et_codList_proveedor.getText() != null) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Seguro que lo quieres eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-            if (opcion == JOptionPane.YES_OPTION){
-                int cod_prov = Integer.parseInt(et_codList_proveedor.getText());
-                proveedor = new ProveedoresEntity(cod_prov, et_nomList_proveedor.getText(), et_apeList_proveedor.getText(), et_dirList_proveedor.getText());
-                listaProveedores.remove(proveedor);
-                new Cargas().eliminarProveedor(cod_prov);
-                CargarLista();
-                et_codList_proveedor.setText("");
-                et_nomList_proveedor.setText("");
-                et_apeList_proveedor.setText("");
-                et_dirList_proveedor.setText("");
+                if (opcion == JOptionPane.YES_OPTION){
+                    int cod_prov = Integer.parseInt(et_codList_proveedor.getText());
+                    proveedor = new ProveedoresEntity(cod_prov);
+                    listaProveedores.remove(proveedor);
+                    new Cargas().eliminarProveedor(cod_prov);
+                    CargarLista();
+                    et_codList_proveedor.setText("");
+                    et_nomList_proveedor.setText("");
+                    et_apeList_proveedor.setText("");
+                    et_dirList_proveedor.setText("");
+                }
             }
         });
     }
